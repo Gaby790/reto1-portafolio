@@ -2,209 +2,37 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Mascotas - Gatitos</title>
-    <link rel="stylesheet" href="index.css">
-    <!-- Uso de CDN de FontAwesome (mala práctica para carga lenta) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <!-- Mala práctica: Incluir estilos CSS en línea en el archivo HTML -->
+
+    <!-- Preconnect y DNS-prefetch para recursos externos -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
+    <!-- CSS crítico en línea -->
     <style>
         body {
-            background-color: #f0f0f0;
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-        header, footer {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
+        header, main, footer {
+            padding: 0 1rem;
         }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
+        h1, h2 {
+            margin: 0.5rem 0;
         }
-        nav ul li {
-            margin-right: 20px;
+        .gallery img, .gif-gallery img {
+            max-width: 100%;
+            height: auto;
         }
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 18px;
-        }
-        nav ul li a:hover {
-            text-decoration: underline;
-        }
-        main {
-            padding: 20px;
-        }
-        section {
-            background-color: #fff;
-            margin-bottom: 20px;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-left: 5px solid #8E24AA; /* Color de acento morado */
-        }
-        section h2 {
-            font-size: 28px;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-            color: #8E24AA; /* Color de acento morado */
-        }
-        section p {
-            font-size: 16px;
-            line-height: 1.5;
-        }
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-        }
-        .gallery img {
-            width: calc(25% - 20px);
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-        .gallery img:hover {
-            transform: scale(1.05);
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        form input, form textarea, form button {
-            margin-bottom: 15px;
-            padding: 15px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        form input:focus, form textarea:focus {
-            border-color: #8E24AA; /* Color de acento morado */
-            box-shadow: 0 0 5px rgba(142, 36, 170, 0.5); /* Sombra de color acento */
-            outline: none;
-        }
-        form textarea {
-            resize: vertical;
-            height: 150px;
-        }
-        form button {
-            background-color: #8E24AA; /* Color de acento morado */
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        form button:hover {
-            background-color: #6A1B9A; /* Un tono más oscuro del color de acento */
-        }
-        .icon-container {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        .icon-container i {
-            font-size: 24px;
-            color: #8E24AA; /* Color de acento morado */
-        }
-        .large-content {
-            background-color: #eee;
-            margin-top: 20px;
-            padding: 20px;
-        }
-        .large-content h2 {
-            margin-top: 0;
-        }
-        .large-content p {
-            margin-bottom: 20px;
-        }
-        .large-content img, .large-content video {
-            width: 100%;
-            margin-bottom: 20px;
-            border-radius: 8px;
-        }
-        .large-content iframe {
-            width: 100%;
-            height: 500px;
-            border: none;
-            margin-bottom: 20px;
-        }
-        .external-script {
-            background-color: #ddd;
-            margin: 20px 0;
-            padding: 20px;
-        }
-        .external-script iframe {
-            width: 100%;
-            height: 500px;
-            border: none;
-        }
-        .external-script p {
-            font-size: 16px;
-            line-height: 1.5;
-            margin-bottom: 20px;
-        }
-        .gif-gallery {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            height: 300px;
-            overflow-y: scroll;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .gif-gallery img {
-            width: calc(33% - 10px);
-            border-radius: 8px;
-        }
-        @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            nav ul li {
-                margin: 10px 0;
-            }
-            .gallery img {
-                width: calc(50% - 10px);
-            }
-            .gif-gallery img {
-                width: calc(50% - 10px);
-            }
-        }
-        @media (max-width: 480px) {
-            .gallery img {
-                width: 100%;
-            }
-            .gif-gallery img {
-                width: 100%;
-            }
-            section h2 {
-                font-size: 24px;
-            }
-            form input, form textarea, form button {
-                font-size: 14px;
-            }
-        }
+        /* Agrega otros estilos críticos aquí */
     </style>
+
+    <!-- Carga diferida del CSS no crítico -->
+    <link rel="stylesheet" href="styles.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="styles.min.css"></noscript>
 </head>
 <body>
     <header>
@@ -228,10 +56,26 @@
         <section>
             <h2>Nuestros Gatitos</h2>
             <div class="gallery">
-                <img src="imgs/gato-naranja.webp" alt="Gatito Naranja">
-                <img src="imgs/gato-negro.webp" alt="Gatito Negro">
-                <img src="imgs/gato-grisblanco.webp" alt="Gatito Gris y Blanco">
-                <img src="imgs/gato-gris.webp" alt="Gatito Gris">
+                <picture>
+                    <source srcset="imgs/gato-naranja-small.webp" media="(max-width: 600px)">
+                    <source srcset="imgs/gato-naranja.webp">
+                    <img src="imgs/gato-naranja.webp" alt="Gatito Naranja" width="300" height="200" loading="lazy">
+                </picture>
+                <picture>
+                    <source srcset="imgs/gato-negro-small.webp" media="(max-width: 600px)">
+                    <source srcset="imgs/gato-negro.webp">
+                    <img src="imgs/gato-negro.webp" alt="Gatito Negro" width="300" height="200" loading="lazy">
+                </picture>
+                <picture>
+                    <source srcset="imgs/gato-grisblanco-small.webp" media="(max-width: 600px)">
+                    <source srcset="imgs/gato-grisblanco.webp">
+                    <img src="imgs/gato-grisblanco.webp" alt="Gatito Gris y Blanco" width="300" height="200" loading="lazy">
+                </picture>
+                <picture>
+                    <source srcset="imgs/gato-gris-small.webp" media="(max-width: 600px)">
+                    <source srcset="imgs/gato-gris.webp">
+                    <img src="imgs/gato-gris.webp" alt="Gatito Gris" width="300" height="200" loading="lazy">
+                </picture>
             </div>
         </section>
 
@@ -257,54 +101,51 @@
             </form>
         </section>
 
-        <!-- Sección con contenido grande innecesario -->
-        <section class="large-content">
-            <h2>Contenido Extra Grande</h2>
-            <p>Esta sección tiene un contenido muy grande que no es necesario para la página, con información adicional, imágenes y videos.</p>
-            <img src="https://placekitten.com/1200/800" alt="Imagen grande de un gatito">
-            <p>El gato doméstico (Felis catus) es un miembro pequeño de la familia Felidae. Los gatos son valorados por los seres humanos por su compañía y su habilidad para cazar plagas como roedores. Los gatos domésticos son similares en tamaño y anatomía a los otros felinos, con cuerpos fuertes, flexibles y dientes y garras diseñados para matar a presas pequeñas.</p>
-            <video controls>
-                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        <!-- Sección con contenido adicional simplificado -->
+        <section class="external-content">
+            <h2>Contenido Externo</h2>
+            <p>Explora más contenido interesante y útil sobre el cuidado de los gatitos. Haz clic en los enlaces a continuación para visitar nuestro sitio web asociado y descubrir más:</p>
+            <ul>
+                <li><a href="https://www.youtube.com/watch?v=tgbNymZ7vqY" target="_blank">Video sobre gatitos en YouTube</a></li>
+                <li><a href="https://www.nationalgeographicla.com/animales/gato-domestico" target="_blank">Artículo sobre el gato doméstico en National Geographic</a></li>
+            </ul>
+        </section>
+
+        <!-- Sección con una galería de GIFs optimizados -->
+        <section class="gif-gallery">
+            <h2>Galería de GIFs</h2>
+            <picture>
+                <source srcset="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy-small.webp" media="(max-width: 600px)">
+                <source srcset="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.webp">
+                <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.webp" alt="GIF de gato" width="300" height="200" loading="lazy">
+            </picture>
+            <picture>
+                <source srcset="https://media.giphy.com/media/mlvseq9yvZhba/giphy-small.webp" media="(max-width: 600px)">
+                <source srcset="https://media.giphy.com/media/mlvseq9yvZhba/giphy.webp">
+                <img src="https://media.giphy.com/media/mlvseq9yvZhba/giphy.webp" alt="GIF de gato" width="300" height="200" loading="lazy">
+            </picture>
+            <picture>
+                <source srcset="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy-small.webp" media="(max-width: 600px)">
+                <source srcset="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.webp">
+                <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.webp" alt="GIF de gato" width="300" height="200" loading="lazy">
+            </picture>
+        </section>
+
+        <!-- Sección con un video optimizado -->
+        <section>
+            <h2>Video de Gatitos</h2>
+            <video controls loading="lazy">
+                <source src="video.mp4" type="video/mp4">
                 Tu navegador no soporta el elemento de video.
             </video>
-            <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
-        </section>
-
-        <!-- Sección con un iframe innecesario -->
-        <section class="external-script">
-            <h2>¡Descubre Más en Nuestro Sitio Web Externo!</h2>
-            <p>Explora más contenido interesante y útil sobre el cuidado de los gatitos en nuestro sitio web externo. Encontrarás artículos, videos y recursos que te ayudarán a cuidar mejor a tu mascota. Haz clic en el enlace a continuación para visitar nuestro sitio web asociado y descubrir más.</p>
-            <p>En nuestro sitio web externo, podrás encontrar guías detalladas sobre la nutrición adecuada para gatos, consejos para el entrenamiento y comportamiento felino, y muchas historias de éxito de otros amantes de los gatos. Además, ofrecemos una comunidad donde puedes interactuar con otros dueños de gatos, compartir tus experiencias y obtener apoyo.</p>
-            <p>No te pierdas nuestros videos educativos que cubren una variedad de temas, desde cómo jugar de manera segura con tu gato hasta cómo identificar y tratar problemas de salud comunes. ¡Visítanos ahora y mejora la vida de tu gatito!</p>
-            <iframe src="https://www.nationalgeographicla.com/animales/gato-domestico"></iframe>
-        </section>
-
-        <!-- Sección con GIFs animados de gatitos -->
-        <section class="gif-gallery">
-            <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="Gatito GIF 1">
-            <img src="https://media.giphy.com/media/mlvseq9yvZhba/giphy.gif" alt="Gatito GIF 2">
-            <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" alt="Gatito GIF 3">
-            <img src="https://media.giphy.com/media/lJNoBCvQYp7nq/giphy.gif" alt="Gatito GIF 4">
-            <img src="https://media.giphy.com/media/13borq7Zo2kulO/giphy.gif" alt="Gatito GIF 5">
-            <img src="https://media.giphy.com/media/VbnUQpnihPSIgIXuZv/giphy.gif" alt="Gatito GIF 6">
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 Gatitos Encantadores</p>
-        <p>Todos los derechos reservados.</p>
+        <p>&copy; 2024 Gatitos Encantadores. Todos los derechos reservados.</p>
     </footer>
-    <!-- Mala práctica: Cargar múltiples librerías de JavaScript desde CDN -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- Mala práctica: Inline JavaScript -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log("Document loaded");
-        });
-    </script>
-    <!-- Mala práctica: Imágenes sin tamaño especificado -->
-    <img src="imgs/gato-naranja.webp" alt="Gatito sin tamaño">
+
+    <!-- Enlazando el archivo JavaScript externo minificado -->
+    <script src="main.min.js" defer></script>
 </body>
 </html>

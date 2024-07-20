@@ -1,0 +1,53 @@
+/* CSS Crítico en línea para estilos esenciales */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header, main, footer {
+    padding: 0 1rem;
+}
+
+h1, h2 {
+    margin: 0.5rem 0;
+}
+
+/* Estilos del header */
+header {
+    background-color: #f8f8f8;
+    padding: 1rem;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Mejorar disposición del menú */
+}
+
+nav ul li {
+    margin-right: 1rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+/* Estilos de la galería */
+.gallery img, .gif-gallery img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Estilos de la sección de servicios */
+.icon-container {
+    display: flex;
+    gap: 1rem;
+}
+
+.icon-container i {
+    font-size: 2rem;
+}
